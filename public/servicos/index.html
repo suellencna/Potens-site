@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços — Potens Wealth</title>
+    <meta name="description" content="Consultoria de investimentos, planejamento financeiro, gestão patrimonial, sucessão, offshore, seguros e soluções empresariais.">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #003A6B;
+            --navy-dark: #002F57;
+            --bg-light: #F4F1EA;
+            --white: #FFFFFF;
+            --gold: #B79B64;
+            --gold-light: #A8884A;
+            --gold-text: #7C5F25;
+            --text-secondary: #5E6E85;
+            --text-secondary-dark: #B9C2D0;
+            --filete-light: #D8D2C2;
+            --filete-dark: #2B5A85;
+            --font-title: 'Playfair Display', Georgia, serif;
+            --font-body: 'Montserrat', 'Segoe UI', sans-serif;
+            --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+            --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px;
+            --space-16: 64px; --space-20: 80px; --space-24: 96px;
+            --radius: 4px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--navy-dark);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+        img { display: block; max-width: 100%; height: auto; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: var(--navy-dark);
+            border-bottom: 1px solid var(--filete-dark);
+        }
+        .header-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .header-logo img { height: 40px; width: auto; }
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+        .header-nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary-dark);
+            transition: color 0.2s;
+        }
+        .header-nav a:hover { color: var(--white); }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: var(--gold);
+            color: var(--navy-dark);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-whatsapp:hover { background: var(--gold-light); }
+        .btn-whatsapp svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-2);
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 var(--space-4); }
+        .section { padding: var(--space-24) 0; }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            background: var(--navy-dark);
+            padding: 140px 0 var(--space-16);
+            text-align: center;
+        }
+        .page-hero .label {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: var(--space-4);
+        }
+        .page-hero h1 {
+            font-family: var(--font-title);
+            font-weight: 600;
+            font-size: 44px;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+        .page-hero p {
+            color: var(--text-secondary-dark);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICE BLOCKS ===== */
+        .service-block {
+            padding: var(--space-20) 0;
+            border-bottom: 1px solid var(--filete-light);
+        }
+        .service-block:last-of-type { border-bottom: none; }
+        .service-block.alt { background: var(--bg-light); }
+
+        .service-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: start;
+        }
+        .service-header .label {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold-text);
+            margin-bottom: var(--space-3);
+        }
+        .service-header h2 {
+            font-family: var(--font-title);
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 1.25;
+            color: var(--navy);
+            margin-bottom: var(--space-4);
+        }
+        .service-header .desc {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .service-details h3 {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--navy);
+            margin-bottom: var(--space-3);
+        }
+        .service-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        .service-details ul li {
+            color: var(--text-secondary);
+            font-size: 15px;
+            padding: 8px 0;
+            border-top: 1px solid var(--filete-light);
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-2);
+        }
+        .service-details ul li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        .service-note {
+            margin-top: var(--space-4);
+            padding: var(--space-4);
+            background: rgba(0,58,107,0.04);
+            border-left: 2px solid var(--gold);
+            border-radius: var(--radius);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== DARK SERVICE BLOCK ===== */
+        .service-block.dark {
+            background: var(--navy-dark);
+            border-bottom-color: var(--filete-dark);
+        }
+        .service-block.dark .label { color: var(--gold); }
+        .service-block.dark h2 { color: var(--white); }
+        .service-block.dark .desc { color: var(--text-secondary-dark); }
+        .service-block.dark .service-details h3 { color: var(--white); }
+        .service-block.dark .service-details ul li {
+            color: var(--text-secondary-dark);
+            border-top-color: var(--filete-dark);
+        }
+        .service-block.dark .service-note {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary-dark);
+        }
+
+        /* ===== CTA ===== */
+        .cta-final {
+            background: var(--navy);
+            text-align: center;
+            padding: var(--space-20) 0;
+        }
+        .cta-final .label {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: var(--space-4);
+        }
+        .cta-final h2 {
+            font-family: var(--font-title);
+            font-weight: 600;
+            font-size: 36px;
+            color: var(--white);
+            margin-bottom: var(--space-4);
+        }
+        .cta-final p {
+            color: var(--text-secondary-dark);
+            font-size: 18px;
+            max-width: 540px;
+            margin: 0 auto var(--space-8);
+        }
+        .cta-final .btn-whatsapp {
+            font-size: 16px;
+            padding: 14px 28px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--navy);
+            padding: var(--space-12) 0 var(--space-8);
+            border-top: 1px solid var(--filete-dark);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: var(--space-10);
+            margin-bottom: var(--space-8);
+        }
+        .footer-brand img { height: 40px; margin-bottom: var(--space-3); }
+        .footer-brand p {
+            color: var(--text-secondary-dark);
+            font-size: 14px;
+            max-width: 320px;
+        }
+        .footer-links {
+            display: flex;
+            gap: var(--space-10);
+        }
+        .footer-col h4 {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: var(--space-3);
+        }
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary-dark);
+            font-size: 14px;
+            padding: 3px 0;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--white); }
+        .footer-bottom {
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--filete-dark);
+        }
+        .footer-legal {
+            color: var(--text-secondary-dark);
+            font-size: 12px;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+        .footer-legal p { margin-bottom: var(--space-2); }
+        .footer-copy {
+            color: var(--text-secondary-dark);
+            font-size: 12px;
+            margin-top: var(--space-4);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            z-index: 90;
+            width: 56px; height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .whatsapp-float:hover { transform: scale(1.08); }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: var(--white); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .section { padding: var(--space-16) 0; }
+            .page-hero { padding: 120px 0 var(--space-12); }
+            .page-hero h1 { font-size: 32px; }
+            .header-nav { display: none; }
+            .header-nav.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 72px; left: 0; right: 0;
+                background: var(--navy-dark);
+                padding: var(--space-6) var(--space-4);
+                border-bottom: 1px solid var(--filete-dark);
+                gap: var(--space-4);
+            }
+            .mobile-toggle { display: block; }
+            .service-header {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--space-6);
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: var(--space-6);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="header-logo">
+            <img src="/img/logo-horizontal-invertido.png" alt="Potens Wealth" width="180" height="40">
+        </a>
+        <nav class="header-nav" id="nav">
+            <a href="/">Início</a>
+            <a href="/#sobre">Quem cuida</a>
+            <a href="/#como">Método</a>
+            <a href="/#diferenciais">Diferenciais</a>
+            <a href="https://wa.me/5511997574995?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Potens%20Wealth." target="_blank" rel="noopener" class="btn-whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Fale conosco
+            </a>
+        </nav>
+        <button class="mobile-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="container">
+        <p class="label">Serviços</p>
+        <h1>Além dos investimentos</h1>
+        <p>Uma gestão patrimonial completa cuida de tudo que impacta seu dinheiro — não só da carteira.</p>
+    </div>
+</section>
+
+<!-- SERVICE: Consultoria de Investimentos -->
+<div class="service-block">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Frente principal</p>
+                <h2>Consultoria de Investimentos</h2>
+                <p class="desc">Análise, alocação e acompanhamento dos seus investimentos com foco em eficiência, diversificação e resultado real — sem vínculo com nenhuma instituição financeira.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Mapeamento completo do perfil de risco e objetivos</li>
+                    <li>Alocação estratégica personalizada</li>
+                    <li>Rebalanceamento periódico da carteira</li>
+                    <li>Acesso a produtos de diversas instituições</li>
+                    <li>Relatórios claros de desempenho e custos</li>
+                    <li>Análise de oportunidades em renda fixa, variável e alternativos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE: Planejamento Financeiro -->
+<div class="service-block alt">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Visão completa</p>
+                <h2>Planejamento Financeiro</h2>
+                <p class="desc">Um plano que integra todas as peças do seu patrimônio — investimentos, imóveis, seguros, dívidas, fluxo de caixa — numa estratégia de longo prazo com metas claras.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Diagnóstico financeiro completo</li>
+                    <li>Projeção de renda passiva e ponto de liberdade financeira</li>
+                    <li>Estratégia tributária integrada</li>
+                    <li>Análise de fluxo de caixa e orçamento</li>
+                    <li>Plano de ação com metas, prazos e indicadores</li>
+                    <li>Revisões periódicas e ajustes de rota</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE: Sucessão e Proteção -->
+<div class="service-block dark">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Gestão patrimonial</p>
+                <h2>Sucessão e Proteção Patrimonial</h2>
+                <p class="desc">Estruturar a transferência do patrimônio de forma eficiente, minimizando custos tributários e conflitos familiares. Proteção para que imprevistos não destruam o que você construiu.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Planejamento sucessório personalizado</li>
+                    <li>Análise de estruturas (holding, testamento, doação)</li>
+                    <li>Coordenação com advogados e contadores</li>
+                    <li>Simulação de cenários tributários</li>
+                    <li>Seguro de vida como ferramenta de liquidez sucessória</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE: Investimentos no Exterior -->
+<div class="service-block">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Diversificação global</p>
+                <h2>Investimentos no Exterior</h2>
+                <p class="desc">Diversificação geográfica e cambial para reduzir o risco-Brasil e acessar mercados globais com estrutura adequada.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Abertura de conta em corretora internacional</li>
+                    <li>Alocação em ativos globais (ETFs, bonds, REITs)</li>
+                    <li>Estratégia de remessa e câmbio</li>
+                    <li>Conformidade fiscal (DCBE, carnê-leão)</li>
+                    <li>Integração com o plano patrimonial doméstico</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE: Seguros e Previdência -->
+<div class="service-block alt">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Proteção</p>
+                <h2>Seguros e Previdência</h2>
+                <p class="desc">Seguros como ferramenta estratégica de proteção e planejamento — não como produto de prateleira. Inclui seguro Whole Life para acúmulo patrimonial e liquidez.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Análise de coberturas existentes e gaps de proteção</li>
+                    <li>Seguro de vida (termo e Whole Life)</li>
+                    <li>Previdência privada com otimização tributária</li>
+                    <li>Seguro patrimonial e responsabilidade civil</li>
+                    <li>Revisão periódica de apólices</li>
+                </ul>
+                <div class="service-note">
+                    O seguro Whole Life funciona como ativo financeiro: acumula valor ao longo do tempo, oferece liquidez e pode ser usado como colateral. Indicado para planejamento de longo prazo e sucessão.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE: Câmbio e Crédito -->
+<div class="service-block">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Operacional</p>
+                <h2>Câmbio e Crédito</h2>
+                <p class="desc">Operações de câmbio com taxas competitivas e acesso a linhas de crédito inteligentes que trabalham a favor do patrimônio — não contra.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Câmbio comercial e financeiro</li>
+                    <li>Remessas internacionais com cotação competitiva</li>
+                    <li>Crédito com garantia de investimentos</li>
+                    <li>Análise de custo-benefício de dívidas</li>
+                    <li>Consórcio como estratégia de aquisição planejada</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SERVICE: Soluções para Empresários -->
+<div class="service-block dark">
+    <div class="container">
+        <div class="service-header">
+            <div>
+                <p class="label">Para empresários</p>
+                <h2>Soluções Empresariais</h2>
+                <p class="desc">Separar patrimônio pessoal do empresarial, otimizar a retirada de lucros e planejar a saída — para que a empresa sirva à sua vida, não o contrário.</p>
+            </div>
+            <div class="service-details">
+                <h3>O que inclui</h3>
+                <ul>
+                    <li>Separação patrimônio pessoal × empresarial</li>
+                    <li>Otimização de pró-labore e distribuição de lucros</li>
+                    <li>Planejamento de saída ou sucessão empresarial</li>
+                    <li>Estruturação de reservas corporativas</li>
+                    <li>Coordenação com contabilidade e jurídico</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-final">
+    <div class="container">
+        <p class="label">Próximo passo</p>
+        <h2>Qual dessas frentes faz sentido para você?</h2>
+        <p>O primeiro passo é uma conversa — entendemos sua situação e montamos a proposta sob medida.</p>
+        <a href="https://wa.me/5511997574995?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20Potens%20Wealth." target="_blank" rel="noopener" class="btn-whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Agende sua conversa inicial
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="/img/logo-horizontal-invertido.png" alt="Potens Wealth" width="180" height="40" loading="lazy">
+                <p>Consultoria patrimonial para quem quer viver dos próprios recursos, com clareza e autonomia.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <a href="/">Início</a>
+                    <a href="/#sobre">Quem cuida</a>
+                    <a href="/#como">Método</a>
+                    <a href="/#diferenciais">Diferenciais</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <a href="https://wa.me/5511997574995" target="_blank" rel="noopener">WhatsApp (11) 99757-4995</a>
+                    <a href="https://www.instagram.com/potenswealth/" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <p>A consultoria de valores mobiliários é prestada por Suellen Andrade Pinto, pessoa física, registrada na CVM (C-Pro R, C-Pro I). Potens Wealth é marca comercial utilizada para comunicação e não possui registro próprio na CVM.</p>
+                <p>Rentabilidade passada não representa garantia de resultados futuros. Investimentos envolvem riscos, incluindo possível perda do capital investido.</p>
+            </div>
+            <p class="footer-copy">&copy; 2026 Potens Wealth. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5511997574995?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20Potens%20Wealth." target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('nav').classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
